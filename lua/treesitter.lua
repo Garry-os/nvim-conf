@@ -4,7 +4,8 @@ local ts_ensure_installed = {
 	"python",
 	"bash",
 	"lua",
-	"make"
+	"make",
+	"markdown"
 }
 
 require("nvim-treesitter").install(ts_ensure_installed)
