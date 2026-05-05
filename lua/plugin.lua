@@ -26,7 +26,7 @@ require("lazy").setup({
   -- highlight-start
   spec = {
 	-- Theme
-	{ "ellisonleao/gruvbox.nvim" },
+	{ 'ellisonleao/gruvbox.nvim' },
 	
 	-- Treesitter
 	{
@@ -40,15 +40,40 @@ require("lazy").setup({
 	  'windwp/nvim-autopairs',
 	  event = "InsertEnter",
 	  config = true
-	  -- use opts = {} for passing setup options
-	  -- this is equivalent to setup({}) function
 	},
 
 	-- Vim airline
-	{ "vim-airline/vim-airline" },
+	{ 'vim-airline/vim-airline' },
+
+	-- LSP stuff
+	{ 'neovim/nvim-lspconfig' },
+	{ 'mason-org/mason.nvim', cmd = { 'Mason', 'MasonInstall', 'MasonUpdate' }, config = true },
+	{ 'mason-org/mason-lspconfig.nvim', config = true },
+
+	-- Autocompletions
+	{
+	  'saghen/blink.cmp',
+	  version = '*', -- Use a release tag to ensure stability
+	  opts = {
+		-- Press enter for autocompletions
+		keymap = { preset = 'enter' },
+
+		appearance = {
+		  use_nvim_cmp_as_default = true,
+		  nerd_font_variant = 'mono'
+		},
+
+		-- Sources to enable for completion
+		sources = {
+		  default = { 'lsp', 'path', 'snippets', 'buffer' },
+		},
+	  },
+	}
+
   },
 
   -- automatically check for plugin updates
   checker = { enabled = true, notify = false },
 })
+
 

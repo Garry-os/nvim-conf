@@ -26,9 +26,14 @@ require("treesitter")
 -- Neovide configs
 if vim.g.neovide then
 	vim.keymap.set('n', '<C-S-v>', '"+p', { noremap = true, silent = true })
-	vim.keymap.set('i', '<C-S-v>', '"+p', { noremap = true, silent = true })
+	-- vim.keymap.set('i', '<C-S-v>', '<C-o>"+p', { noremap = true, silent = true })
+	-- Use native insert copy instead
+	vim.keymap.set('i', '<C-S-v>', '<C-r>+', { noremap = true, silent = true })
 
 	-- Prevents IME errors
 	vim.g.neovide_input_ime = false
 end
+
+-- Mason
+require("mason-conf")
 
